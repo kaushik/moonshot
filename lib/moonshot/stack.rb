@@ -92,7 +92,11 @@ module Moonshot
     end
 
     def parameters
-      get_stack(@name).parameters
+      params = {}
+      get_stack(@name).parameters.each do |p|
+        params[p.parameter_key] = p.parameter_value
+      end
+      params
     end
 
     def outputs
