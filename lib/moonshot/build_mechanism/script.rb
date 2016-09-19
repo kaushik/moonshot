@@ -66,9 +66,7 @@ class Moonshot::BuildMechanism::Script
       end
       unless result.exitstatus == 0
         ilog.error "Build script failed with exit status #{result.exitstatus}!"
-        ilog.error 'Last 10 lines of output follows:'
-        output.pop(10).each { |l| ilog.error l }
-
+        ilog.error output.join("\n")
         step.failure "Build script #{@script} failed with exit status #{result.exitstatus}!"
       end
     end
